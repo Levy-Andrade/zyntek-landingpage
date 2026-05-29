@@ -1,0 +1,1991 @@
+/* =============================================================
+   ZYNTEK — STYLE.CSS
+   Organização:
+   1. Reset & Base
+   2. Variáveis CSS
+   3. Utilitários
+   4. Scrollbar
+   5. Partículas
+   6. Header & Navegação
+   7. Botões
+   8. Hero
+   9. Seção Sobre
+   10. Seção Serviços
+   11. Seção Equipe
+   12. Cards Premium (compartilhado)
+   13. Seção Projetos
+   14. Modais (Equipe + Projetos)
+   15. Contatos / Footer
+   16. WhatsApp Flutuante
+   17. Animações & Reveal
+   18. Responsividade
+============================================================= */
+
+
+/* =============================================================
+   1. RESET & BASE
+============================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #A020F0 #121212;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+section {
+  position: relative;
+  padding: 120px 8%;
+  z-index: 2;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =============================================================
+   2. VARIÁVEIS CSS
+============================================================= */
+
+:root {
+  /* Cores principais */
+  --primary-color:    #a300ff;
+  --secondary-color:  #6a00ff;
+
+  /* Texto */
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255, 255, 255, .72);
+
+  /* Fundos */
+  --bg-dark: #000000;
+  --bg-card: rgba(255, 255, 255, .03);
+
+  /* Bordas */
+  --border-glass:         1px solid rgba(255, 255, 255, .08);
+  --border-purple:        1px solid rgba(163, 0, 255, .35);
+  --border-purple-strong: 1px solid rgba(195, 0, 255, .8);
+
+  /* Arredondamentos */
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-xl:   30px;
+  --radius-full: 999px;
+
+  /* Blur */
+  --blur-sm: blur(8px);
+  --blur-md: blur(12px);
+  --blur-lg: blur(18px);
+
+  /* Sombras */
+  --shadow-purple-sm: 0 0 20px rgba(163, 0, 255, .18);
+  --shadow-purple-md: 0 0 25px rgba(163, 0, 255, .35);
+  --shadow-purple-lg: 0 0 60px rgba(163, 0, 255, .25);
+  --shadow-card:      0 8px 32px rgba(0, 0, 0, .32);
+
+  /* Transições */
+  --transition-fast:   .25s ease;
+  --transition-medium: .35s ease;
+  --transition-smooth: .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =============================================================
+   3. UTILITÁRIOS
+============================================================= */
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Efeito de vidro fosco reutilizável */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.purple-border { border: var(--border-purple); }
+
+.purple-glow {
+  box-shadow:
+    0 0 20px rgba(163, 0, 255, .25),
+    0 0 45px rgba(163, 0, 255, .12);
+}
+
+.absolute-full {
+  position: absolute;
+  inset: 0;
+}
+
+/* Texto roxo de destaque inline */
+.text-purple {
+  color: #cc00ff;
+  font-weight: 600;
+}
+
+.purple-highlight {
+  color: #a300ff;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(163, 0, 255, 0.3);
+}
+
+.highlight {
+  color: #a855f7;
+  font-weight: bold;
+}
+
+/* Separador de exemplos no rodapé dos cards */
+.card-examples {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #222;
+  color: #a3a3a3;
+  font-size: 0.85rem;
+}
+
+
+/* =============================================================
+   4. SCROLLBAR CUSTOMIZADA
+============================================================= */
+
+::-webkit-scrollbar       { width: 12px; }
+::-webkit-scrollbar-track { background: #000000; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 6px;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover { background-color: #9333ea; }
+
+
+/* =============================================================
+   5. PARTÍCULAS DE FUNDO
+   Grade pontilhada fixa, cria profundidade sem custo de GPU
+============================================================= */
+
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: -9;
+  background-image: radial-gradient(rgba(216, 0, 255, .08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+
+/* =============================================================
+   6. HEADER & NAVEGAÇÃO
+============================================================= */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 22px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, .72);
+  border-bottom: 1px solid rgba(163, 0, 255, 0.12);
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img,
+.logo-video {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Links de navegação desktop */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-bottom: 8px;
+  opacity: .88;
+  transition: color .3s ease, opacity .3s ease;
+}
+
+/* Sublinhado animado que cresce do centro */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 20px;
+  transition: width .35s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Título da seção — padrão compartilhado entre todas as seções */
+.section-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-title span {
+  color: var(--primary-color);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.section-title h2 {
+  margin-top: 16px;
+  margin-bottom: 28px;
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+/* Variante alinhada à esquerda (Sobre e Serviços) */
+.left-align {
+  text-align: left;
+  margin-bottom: 35px;
+}
+
+
+/* =============================================================
+   7. BOTÕES
+   .btn-header e .btn-primary compartilham base idêntica;
+   fill gradiente via ::before para evitar repaint no hover
+============================================================= */
+
+.btn-header,
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 34px;
+  border-radius: 14px;
+  border: 1px solid rgba(216, 0, 255, .45);
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .35s ease-in-out;
+}
+
+.btn-header::before,
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  z-index: -1;
+  transition: width .35s ease-in-out;
+}
+
+.btn-header:hover::before,
+.btn-primary:hover::before {
+  width: 100%;
+}
+
+.btn-header:hover,
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(216, 0, 255, .35);
+}
+
+/* Botões dentro da seção Hero — versão glassmorphism */
+.hero-buttons .btn-primary,
+.home-buttons .btn-primary,
+.hero .btn-primary,
+.projetos-cta .btn-primary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(163, 0, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 12px rgba(163, 0, 255, 0.12);
+  padding: 16px 34px;
+  border-radius: 16px;
+}
+
+.hero-buttons .btn-primary::before,
+.home-buttons .btn-primary::before,
+.hero .btn-primary::before,
+.projetos-cta .btn-primary::before {
+  background: linear-gradient(135deg, rgba(163, 0, 255, 0.12), rgba(255, 255, 255, 0.02));
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hero-buttons .btn-primary:hover,
+.home-buttons .btn-primary:hover,
+.hero .btn-primary:hover,
+.projetos-cta .btn-primary:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(195, 0, 255, 0.8);
+  background: linear-gradient(135deg, rgba(163, 0, 255, 0.22), rgba(70, 0, 120, 0.18));
+  box-shadow: 0 0 20px rgba(163, 0, 255, 0.6), 0 0 45px rgba(163, 0, 255, 0.25);
+}
+
+.hero-buttons .btn-primary:hover::before,
+.home-buttons .btn-primary:hover::before,
+.hero .btn-primary:hover::before,
+.projetos-cta .btn-primary:hover::before {
+  opacity: 1;
+}
+
+.hero-buttons .btn-primary:active,
+.home-buttons .btn-primary:active,
+.hero .btn-primary:active,
+.projetos-cta .btn-primary:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Modal buttons */
+.btn-modal {
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-modal.primary {
+  background: #ae00ae;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(174, 0, 174, 0.2);
+}
+
+.btn-modal.secondary {
+  background: transparent;
+  border: 1px solid rgba(174, 0, 174, 0.5);
+  color: #ffffff;
+}
+
+.btn-modal.primary:hover {
+  background: #cb00cb;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(174, 0, 174, 0.45);
+}
+
+.btn-modal.secondary:hover {
+  transform: translateY(-2px);
+  border-color: #ae00ae;
+  background: rgba(174, 0, 174, 0.05);
+}
+
+
+/* =============================================================
+   8. HERO
+============================================================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 120px;
+  background: #000;
+}
+
+/* Vídeo decorativo de fundo — opacidade baixa para não poluir */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .12;
+  z-index: -3;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.96) 20%, rgba(0,0,0,.82) 55%, rgba(123,44,255,.10) 100%);
+  z-index: -2;
+}
+
+.hero-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Bloco de texto — overflow:visible para não cortar .code-line com nowrap */
+.hero-text-block {
+  flex: 1;
+  max-width: 760px;
+  overflow: visible;
+  animation: heroFade 1.2s ease forwards;
+  min-width: 0;
+}
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mini-title {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #d4d4e2;
+  letter-spacing: 3px;
+  font-size: .85rem;
+  font-weight: 600;
+  opacity: .9;
+}
+
+/* Título principal em coluna — três linhas */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: .95;
+  margin-bottom: 30px;
+}
+
+.title-white {
+  display: block;
+  font-size: clamp(3.8rem, 8vw, 6.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -3px;
+  line-height: .95;
+}
+
+/* Linha de código glitch com neon pulsante —
+   white-space:nowrap + font-size em vw garantem que o texto
+   jamais quebre em duas linhas em nenhum viewport */
+.code-line {
+  display: block;
+  font-size: clamp(1.6rem, 5.2vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: .95;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.purple-neon {
+  color: #a300ff;
+  text-shadow:
+    0 0 10px rgba(163, 0, 255, .75),
+    0 0 22px rgba(163, 0, 255, .55),
+    0 0 45px rgba(163, 0, 255, .35);
+  animation: purplePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes purplePulse {
+  0%   { text-shadow: 0 0 10px rgba(163,0,255,.55), 0 0 22px rgba(163,0,255,.35); }
+  50%  { text-shadow: 0 0 18px rgba(163,0,255,.95), 0 0 40px rgba(163,0,255,.75), 0 0 70px rgba(163,0,255,.45); }
+  100% { text-shadow: 0 0 10px rgba(163,0,255,.55), 0 0 22px rgba(163,0,255,.35); }
+}
+
+.hero-description {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.08rem;
+  margin-bottom: 42px;
+  max-width: 580px;
+}
+
+/* Mascote flutuante */
+.hero-image-block {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-mascot {
+  width: 100%;
+  max-width: 720px;
+  filter: drop-shadow(0 0 35px rgba(216, 0, 255, .35));
+}
+
+
+/* =============================================================
+   9. SEÇÃO SOBRE
+============================================================= */
+
+#sobre {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.sobre-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.sobre-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .78);
+  z-index: 1;
+}
+
+#sobre .section-title,
+#sobre .sobre-grid {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =============================================================
+   10. SEÇÃO SERVIÇOS
+       (Compartilha padrão de layout com Sobre)
+============================================================= */
+
+#servicos,
+#projetos,
+#equipe {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+#equipe { padding: 120px 8%; }
+
+/* Vídeos de fundo comuns às seções Serviços, Projetos e Equipe */
+.servicos-bg-video,
+.projetos-bg-video,
+.equipe-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.equipe-bg-video { opacity: 0.4; }
+
+.servicos-overlay,
+.projetos-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .78);
+  z-index: 1;
+}
+
+.equipe-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%);
+  z-index: 1;
+}
+
+/* Garante z-index acima dos overlays nas seções com vídeo */
+#servicos .section-title,
+#servicos .servicos-grid,
+#projetos .section-title,
+#projetos .projetos-grid,
+#equipe .section-title,
+#equipe .equipe-grid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Layout de duas colunas (texto + imagem) compartilhado */
+.sobre-top,
+.servicos-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.sobre-text,
+.servicos-text {
+  flex: 1;
+  max-width: 650px;
+}
+
+.sobre-text p,
+.servicos-text p {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+.sobre-visual,
+.servicos-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Imagem flutuante com sombra roxa */
+.sobre-visual img,
+.servicos-visual img {
+  width: 100%;
+  max-width: 620px;
+  filter: drop-shadow(0 0 30px rgba(216, 0, 255, .25));
+}
+
+#sobre .sobre-grid,
+#servicos .servicos-grid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Grids de cards — responsivos por auto-fit */
+.sobre-grid,
+.servicos-grid,
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.equipe-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 60px;
+}
+
+
+/* =============================================================
+   11. SEÇÃO EQUIPE — CARDS DE MEMBROS
+============================================================= */
+
+.team-card {
+  will-change: transform;
+  position: relative;
+  width: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.32);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.team-card:hover {
+  border-color: #ff00ff;
+  box-shadow:
+    0 0 25px rgba(255, 0, 255, 0.35),
+    0 0 60px rgba(255, 0, 255, 0.12),
+    inset 0 0 10px rgba(255, 0, 255, 0.15);
+  background: radial-gradient(circle at bottom right, rgba(174,0,174,0.18) 0%, rgba(255,255,255,0.04) 70%);
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1f122b 0%, #0d0d0d 100%);
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(20%) brightness(90%);
+  transition: transform .4s ease, filter .4s ease;
+}
+
+.member-photo {
+  object-fit: cover;
+  filter: grayscale(10%) brightness(95%);
+  transition: all 0.4s ease;
+}
+
+.zynk-photo {
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.35);
+  transform-origin: top center;
+  filter: drop-shadow(0 0 10px rgba(174, 0, 174, 0.3));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.team-card:hover img       { transform: scale(1.05); filter: grayscale(0%) brightness(100%); }
+.team-card:hover .member-photo { transform: scale(1.03); filter: grayscale(0%) brightness(105%); }
+.team-card:hover .zynk-photo   { transform: scale(1.42); filter: drop-shadow(0 0 20px rgba(255,0,255,0.6)); }
+
+.card-info {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding: 22px 20px;
+  text-align: left;
+  background: rgba(9, 9, 11, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.team-card:hover .card-info {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(174,0,174,0.08) 100%);
+}
+
+.card-info h3 {
+  position: relative;
+  z-index: 3;
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-info .role {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  color: #ae00ae;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  transition: color 0.4s ease;
+}
+
+.team-card:hover .card-info .role { color: #ff00ff; }
+
+/* Logo marca d'água dentro do card */
+.card-back-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  transform: translate(-50%, -50%) scale(1);
+  filter: invert(1) brightness(2);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.team-card:hover .card-back-logo {
+  opacity: 0.12;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+/* =============================================================
+   12. CARDS PREMIUM (compartilhado — Sobre, Serviços, Projetos)
+============================================================= */
+
+.premium-card {
+  position: relative;
+  padding: 35px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.premium-card::before { display: none; }
+
+.premium-card:hover {
+  transform: translateY(-15px);
+  border-color: #ae00ae;
+  box-shadow: 0 0 25px rgba(174,0,174,.6), 0 0 60px rgba(174,0,174,.18);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.premium-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.premium-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Ícone do card — imagem 60×60 com efeito hover */
+.about-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.about-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.premium-card:hover .about-icon img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(204, 0, 255, 0.6));
+}
+
+/* Holofote de luz que segue o cursor — aplicado via JS */
+.magnetic-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.magnetic-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+
+/* =============================================================
+   13. SEÇÃO PROJETOS
+============================================================= */
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 60px;
+  align-items: stretch;
+}
+
+/* Card de projeto — variação do premium-card */
+.project-card {
+  will-change: transform;
+  position: relative;
+  min-height: 260px;
+  padding: 30px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: #c000ff;
+  box-shadow: 0 0 30px rgba(192, 0, 255, .28);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Ícone do projeto — glow mais intenso no hover */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 22px;
+}
+
+.icon-container img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  opacity: .92;
+  filter: drop-shadow(0 0 12px rgba(163, 0, 255, .55));
+  transition: transform .35s ease, filter .35s ease, opacity .35s ease;
+}
+
+.project-card:hover .icon-container img {
+  transform: scale(1.08);
+  opacity: 1;
+  filter: drop-shadow(0 0 18px rgba(192, 0, 255, .95));
+}
+
+/* Bloco de CTA ao final da seção de projetos */
+.projetos-cta {
+  position: relative;
+  margin-top: 120px;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 90px 8%;
+}
+
+.cta-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .2;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.92), rgba(20,0,30,.88));
+}
+
+.cta-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.cta-text       { flex: 1; }
+.cta-text h2    { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
+.cta-text p     { color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 40px; }
+.cta-image      { flex: 1; display: flex; justify-content: center; }
+
+.cta-image img {
+  width: 100%;
+  max-width: 520px;
+  filter: drop-shadow(0 0 45px rgba(163, 0, 255, .28));
+}
+
+
+/* =============================================================
+   14. MODAIS (Equipe e Projetos)
+       Ambos compartilham botão de fechar e estilos de overlay;
+       diferem apenas na estrutura interna do conteúdo
+============================================================= */
+
+/* -- Modal Equipe -- */
+#team-modal {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+#team-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 780px;
+  min-height: 400px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: #070708;
+  border: 2px solid #ae00ae;
+  box-shadow: 0 0 50px rgba(174,0,174,0.3), inset 0 0 20px rgba(174,0,174,0.1);
+  animation: premiumModalEntrance .55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Vídeo decorativo interno do modal da equipe */
+.modal-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.modal-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .30;
+  filter: brightness(.45) saturate(1.4) blur(1px);
+  transform: scale(1.08);
+}
+
+.modal-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.88) 0%, rgba(10,10,10,.72) 45%, rgba(20,0,25,.82) 100%);
+  backdrop-filter: blur(2px);
+}
+
+/* Logo marca d'água centralizada no modal */
+.modal-zynk-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  opacity: .045;
+  z-index: 1;
+  pointer-events: none;
+  filter: invert(1) brightness(2) drop-shadow(0 0 20px rgba(216,0,255,.25));
+}
+
+.modal-body-layout {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Foto circular com borda gradiente */
+.modal-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-circle-wrapper {
+  width: 260px;
+  height: 260px;
+  padding: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ae00ae, #5e005e);
+  box-shadow: 0 0 30px rgba(174, 0, 174, 0.4);
+}
+
+.profile-circle-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #070708;
+}
+
+.modal-right { flex: 1.6; text-align: left; }
+
+.modal-greet {
+  display: block;
+  margin-bottom: 2px;
+  color: #888;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.modal-right h2 {
+  margin: 0 0 5px;
+  color: #ffffff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.modal-right h3 {
+  margin: 0 0 20px;
+  color: #ae00ae;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.modal-bio {
+  margin: 0 0 25px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Tags de habilidade do membro */
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tag-item {
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(174, 0, 174, 0.08);
+  border: 1px solid rgba(174, 0, 174, 0.25);
+  color: #df40df;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag-item:hover {
+  background: rgba(174, 0, 174, 0.2);
+  border-color: #ae00ae;
+}
+
+.modal-actions { display: flex; gap: 15px; }
+
+/* -- Modal Projetos -- */
+.project-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .88);
+  backdrop-filter: blur(12px);
+}
+
+.project-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  padding: 50px;
+  overflow: hidden;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.project-modal-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .18;
+}
+
+.project-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.92), rgba(15,0,20,.84));
+}
+
+.project-modal-body { position: relative; z-index: 5; }
+.project-modal-body h2 { font-size: 3rem; margin-bottom: 35px; }
+
+.project-video-wrapper {
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.project-video-wrapper video { width: 100%; display: block; }
+.project-modal-body p { color: #d0d0d0; line-height: 1.8; margin-bottom: 35px; }
+.project-modal-buttons { display: flex; gap: 20px; }
+
+/* -- Botão de fechar (compartilhado pelos dois modais) --
+   Usa rotação do ícone × 180° ao hover para feedback visual */
+.premium-modal-close,
+.close-project-modal {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(163, 0, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(10, 10, 14, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease;
+}
+
+.premium-modal-close::before,
+.close-project-modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(163,0,255,.18), transparent 70%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.premium-modal-close:hover,
+.close-project-modal:hover {
+  transform: scale(1.06);
+  border-color: rgba(195, 0, 255, .85);
+  background: rgba(18, 18, 24, 0.98);
+  box-shadow: 0 0 25px rgba(163,0,255,.35), 0 0 60px rgba(163,0,255,.18), inset 0 0 20px rgba(163,0,255,.08);
+}
+
+.premium-modal-close:hover::before,
+.close-project-modal:hover::before { opacity: 1; }
+
+.premium-modal-close:active,
+.close-project-modal:active { transform: scale(.92); }
+
+/* Ícone × formado por dois spans rotacionados */
+.close-x {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+.premium-modal-close:hover .close-x,
+.close-project-modal:hover .close-x { transform: rotate(180deg); }
+
+.close-x span {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffffff;
+  transform-origin: center;
+  transition: background .35s ease, box-shadow .35s ease, width .35s ease;
+}
+
+.close-x span:nth-child(1) { transform: rotate(45deg); }
+.close-x span:nth-child(2) { transform: rotate(-45deg); }
+
+.premium-modal-close:hover .close-x span,
+.close-project-modal:hover .close-x span {
+  background: #d000ff;
+  width: 24px;
+  box-shadow: 0 0 10px rgba(208,0,255,.95), 0 0 22px rgba(208,0,255,.45);
+}
+
+/* Animação de entrada do modal */
+@keyframes premiumModalEntrance {
+  0%   { opacity: 0; transform: translateY(30px) scale(.96); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);   filter: blur(0); }
+}
+
+
+/* =============================================================
+   15. CONTATOS / FOOTER
+============================================================= */
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 30px 120px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.contact-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.92), rgba(0,0,0,0.88));
+  z-index: 2;
+}
+
+/* Borrões decorativos de luz roxa */
+.contact-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(163, 0, 255, 0.12);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.glow-left  { left: -180px; top: 50px; }
+.glow-right { right: -180px; bottom: 0; }
+
+.contact-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+}
+
+.contact-texts { margin-bottom: 70px; }
+
+.contact-highlight {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #c100ff;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.5px;
+}
+
+.contact-icons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 42px;
+  margin-bottom: 90px;
+}
+
+.contact-item {
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.35s ease;
+}
+
+.contact-item:hover { transform: translateY(-8px); }
+
+.contact-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top, rgba(40,40,40,0.95), rgba(5,5,5,1));
+  border: 1px solid rgba(163, 0, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.35s ease, border 0.35s ease, box-shadow 0.35s ease;
+}
+
+.contact-icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.contact-item:hover .contact-icon {
+  border: 1px solid rgba(163, 0, 255, 0.9);
+  box-shadow:
+    0 0 18px rgba(163,0,255,0.55),
+    0 0 45px rgba(163,0,255,0.25),
+    inset 0 0 20px rgba(163,0,255,0.12);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.contact-item:hover .contact-icon img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 12px rgba(163,0,255,0.95)) drop-shadow(0 0 24px rgba(163,0,255,0.55));
+}
+
+.contact-item span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover span { color: #a300ff; }
+
+.contact-zynk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.contact-zynk img {
+  width: 320px;
+  max-width: 90%;
+  object-fit: contain;
+  opacity: 0.96;
+  filter: drop-shadow(0 0 25px rgba(163,0,255,0.35));
+  animation: zynkFloat 4s ease-in-out infinite;
+}
+
+@keyframes zynkFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+
+/* =============================================================
+   16. BOTÃO FLUTUANTE — WHATSAPP
+============================================================= */
+
+.floating-whatsapp {
+  will-change: transform;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 999999;
+  color: #ffffff;
+  font-size: 2rem;
+  background: linear-gradient(135deg, rgba(140,0,255,0.95), rgba(75,0,130,0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 0 20px rgba(163,0,255,0.35), 0 0 45px rgba(163,0,255,0.18);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease;
+}
+
+.floating-whatsapp::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(163,0,255,.25));
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-8px) scale(1.08);
+  border-color: rgba(210, 0, 255, 0.45);
+  background: linear-gradient(135deg, rgba(170,0,255,1), rgba(95,0,180,1));
+  box-shadow: 0 0 25px rgba(195,0,255,0.55), 0 0 60px rgba(163,0,255,0.35);
+}
+
+.floating-whatsapp:hover::before { opacity: 1; }
+
+.floating-whatsapp i {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,.35));
+}
+
+
+/* =============================================================
+   17. ANIMAÇÕES & REVEAL SCROLL
+============================================================= */
+
+/* Floating genérico — usado em mascotes e imagens decorativas */
+.floating-element {
+  animation: floatingElement 5s ease-in-out infinite;
+}
+
+@keyframes floatingElement {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Reveal com IntersectionObserver — estados inicial e ativo */
+.reveal,
+.reveal-card,
+.reveal-left,
+.reveal-right,
+.reveal-top,
+.reveal-bottom,
+.zoom-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-init { opacity: 0; }
+
+.reveal-left.reveal-init   { transform: translateX(-80px); }
+.reveal-right.reveal-init  { transform: translateX(80px); }
+.reveal-top.reveal-init    { transform: translateY(-80px); }
+.reveal-bottom.reveal-init { transform: translateY(80px); }
+.reveal-card.reveal-init   { transform: translateY(60px) scale(0.95); }
+.zoom-in.reveal-init       { transform: scale(0.7); }
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Delays de entrada escalonada para cards */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Typewriter reveal — clip-path para efeito de "revelar" texto */
+.reveal-0, .reveal-1, .reveal-2, .reveal-3, .reveal-4 {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.reveal-0 { animation: typingFade .8s ease forwards; animation-delay: .2s; }
+.reveal-1 { animation: typingFade .8s ease forwards; animation-delay: 1s; }
+.reveal-2 { animation: typingFade .8s ease forwards; animation-delay: 1.8s; }
+.reveal-3 { animation: typingFade .8s ease forwards; animation-delay: 2.6s; }
+.reveal-4 { animation: typingFade .8s ease forwards; animation-delay: 3.4s; }
+
+@keyframes typingFade {
+  0%   { opacity: 0; clip-path: inset(0 100% 0 0); filter: blur(5px); }
+  100% { opacity: 1; clip-path: inset(0 0 0 0);    filter: blur(0); }
+}
+
+/* Glitch layers — sobreposições invisíveis que piscam aleatoriamente */
+.glitch-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  font-weight: 900;
+  color: #b100ff;
+  text-shadow: 0 0 8px #c300ff, 0 0 20px #c300ff, 0 0 40px #c300ff;
+  animation: glitchFlash 4s infinite;
+}
+
+.glitch-1 { animation-delay: 1s; }
+.glitch-2 { animation-delay: 2.2s; }
+.glitch-3 { animation-delay: 3.4s; }
+
+@keyframes glitchFlash {
+  0%   { opacity: 0; transform: translate(0); }
+  2%   { opacity: 1; transform: translate(-2px, 2px); }
+  4%   { opacity: .8; transform: translate(2px, -2px); }
+  6%   { opacity: 0; transform: translate(0); }
+  100% { opacity: 0; }
+}
+
+/* cursor-glow removido — efeito de rastro do mouse eliminado */
+
+
+/* =============================================================
+   18. MENU MOBILE
+============================================================= */
+
+.mobile-menu-toggle {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(163, 0, 255, 0.35);
+  outline: none;
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 14px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1002;
+  transition: border .35s ease, box-shadow .35s ease, background .35s ease;
+}
+
+.mobile-menu-toggle:hover {
+  box-shadow: 0 0 20px rgba(163, 0, 255, 0.35);
+  border-color: rgba(163, 0, 255, 0.8);
+}
+
+.mobile-menu-toggle span {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 20px;
+  transition: transform 0.35s ease, opacity 0.25s ease, background 0.35s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle span:nth-child(1) { transform: translateY(-7px); }
+.mobile-menu-toggle span:nth-child(2) { transform: translateY(0); }
+.mobile-menu-toggle span:nth-child(3) { transform: translateY(7px); }
+
+/* Hamburguer → X ao ativar */
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); }
+
+.mobile-menu-toggle.active {
+  border-color: rgba(163, 0, 255, 0.95);
+  box-shadow: 0 0 25px rgba(163,0,255,0.35), inset 0 0 15px rgba(163,0,255,0.08);
+}
+
+/* Menu lateral deslizante */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  max-width: 85%;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(0,0,0,0.98));
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(163, 0, 255, 0.25);
+  z-index: 1001;
+  transition: right 0.45s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu.active { right: 0; }
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  text-align: center;
+}
+
+.mobile-nav a {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  color: #a300ff;
+  transform: translateX(-5px);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 1000;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =============================================================
+   19. RESPONSIVIDADE
+============================================================= */
+
+@media (max-width: 1024px) {
+  .hero-container,
+  .cta-content,
+  .sobre-top,
+  .servicos-top {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-text-block { max-width: 100%; }
+  .hero-title      { align-items: center; }
+  .hero-buttons    { justify-content: center; }
+  .left-align      { text-align: center; }
+  .cta-text h2     { font-size: 3rem; }
+}
+
+@media (max-width: 980px) {
+  .cta-content { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 900px) {
+  nav, .btn-header { display: none; }
+  .mobile-menu-toggle { display: flex; }
+}
+
+@media (max-width: 768px) {
+  /* Impede qualquer scroll horizontal */
+  body, html { overflow-x: hidden; }
+
+  header  { padding: 18px 5%; }
+  section { padding: 80px 5%; }
+
+  /* Hero — empilha mascote abaixo do texto em mobile */
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    min-height: auto;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .hero-text-block {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-title {
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Título branco escala com a largura da tela */
+  .title-white {
+    font-size: clamp(2.4rem, 9vw, 5rem);
+    letter-spacing: -2px;
+  }
+
+  /* Linha glitch cabe em uma linha até 320px
+     (5.2vw × 320 = ~16.6px mínimo coberto pelo clamp(1.6rem)) */
+  .code-line {
+    font-size: clamp(1.4rem, 5vw, 4rem);
+    letter-spacing: -1px;
+  }
+
+  .mini-title {
+    font-size: .68rem;
+    line-height: 1.8;
+    letter-spacing: 2px;
+  }
+
+  .hero-description {
+    font-size: .98rem;
+    margin-bottom: 32px;
+    max-width: 100%;
+  }
+
+  .hero-buttons { justify-content: center; }
+
+  /* Botão "Solicitar Projeto" ocupa largura confortável em mobile */
+  .hero-buttons .btn-primary {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 24px;
+    font-size: .95rem;
+  }
+
+  .hero-image-block {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .hero-mascot { max-width: 100%; }
+
+  .mini-title { font-size: .72rem; line-height: 1.7; }
+
+  .section-title h2,
+  .cta-text h2 { font-size: 2.2rem; }
+
+  /* Modal equipe — empilha verticalmente em mobile */
+  .modal-content {
+    padding: 30px 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-body-layout {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .modal-right { text-align: center; }
+  .profile-circle-wrapper { width: 180px; height: 180px; }
+  .modal-tags  { justify-content: center; }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn-modal { justify-content: center; width: 100%; }
+
+  /* Botão fechar menor em mobile */
+  .premium-modal-close,
+  .close-project-modal { width: 50px; height: 50px; top: 18px; right: 18px; }
+
+  .close-x { width: 20px; height: 20px; }
+  .close-x span { width: 20px; }
+
+  .contact-section       { padding: 110px 20px 90px; }
+  .contact-icons-wrapper { gap: 26px; margin-bottom: 70px; }
+  .contact-icon          { width: 78px; height: 78px; }
+  .contact-icon img      { width: 36px; height: 36px; }
+  .contact-highlight     { font-size: 1.1rem; }
+  .contact-subtitle      { font-size: 0.92rem; }
+  .contact-zynk img      { width: 250px; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 70px 4%; }
+
+  .code-line {
+    font-size: clamp(1.2rem, 4.8vw, 2.8rem);
+  }
+
+  .title-white {
+    font-size: clamp(2rem, 8.5vw, 3.5rem);
+  }
+
+  .contact-icons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 24px;
+  }
+
+  .contact-title  { margin-bottom: 24px; }
+  .contact-texts  { margin-bottom: 50px; }
+  .contact-zynk img { width: 220px; }
+}
+
+/* Telas muito pequenas (320px) — ajuste final de segurança */
+@media (max-width: 360px) {
+  .code-line   { font-size: 1.15rem; letter-spacing: -0.5px; }
+  .title-white { font-size: 1.95rem; letter-spacing: -1.5px; }
+}
+
+/* =========================================================
+   GLITCH SYSTEM
+========================================================= */
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  transition: all .15s ease;
+  will-change: transform, opacity, filter;
+}
+
+.glitch-active {
+  animation: glitchFlicker .25s linear infinite;
+  text-shadow:
+    2px 0 #ff00ff,
+   -2px 0 #00ffff,
+    0 0 18px rgba(162, 0, 255, .8);
+}
+
+@keyframes glitchFlicker {
+
+  0% {
+    transform: translate(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  20% {
+    transform: translate(-2px, 1px);
+  }
+
+  40% {
+    transform: translate(2px, -1px);
+  }
+
+  60% {
+    transform: translate(-1px, 2px);
+    filter: blur(.6px);
+  }
+
+  80% {
+    transform: translate(1px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
