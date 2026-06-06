@@ -1,57 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-
-  <!-- =====================================================
-       META & CONFIGURAÇÕES BASE
-  ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Zyntek — Software House especializada em sistemas, automações, landing pages e IA para empresas modernas.">
   <title>Zyntek | Tecnologia que Conecta</title>
+  <link rel="icon" href="assets/fotos/logo z .png" type="image/x-icon">
 
-  <link rel="icon" href="logo z .png" type="image/x-icon">
-
-  <!-- =====================================================
-       FONTES EXTERNAS
-       Google Fonts + Remix Icons carregados com preconnect
-       para otimizar performance de renderização
-  ====================================================== -->
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
-  <!-- =====================================================
-       ESTILOS
-  ====================================================== -->
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-  <!-- =====================================================
-       FUNDO COM PARTÍCULAS (fixo, z-index -9)
-  ====================================================== -->
-  <div class="particles"></div>
+   
+  <!-- ============================================================
+       PRELOADER ZYNTEK
+  ============================================================= -->
+  <div id="zyntek-preloader" aria-hidden="true">
+    <div class="preloader-core">
+      <div class="preloader-glow-ring"></div>
+      <img src="assets/fotos/logo z .png" alt="Logo Zyntek" width="40" height="40">
+    </div>
+    <div class="preloader-bar-wrapper">
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill" id="preloaderBarFill"></div>
+      </div>
+      <span class="preloader-percent" id="preloaderPercent">0%</span>
+    </div>
+  </div>
+
+  <!-- Partículas de fundo -->
+  <div class="particles" aria-hidden="true"></div>
+
 
   <!-- =====================================================
-       HEADER — NAVEGAÇÃO PRINCIPAL
+       HEADER
   ====================================================== -->
   <header id="header">
 
-    <!-- Logo composta: ícone estático + vídeo glitch animado -->
     <div class="logo">
-      <img src="logo z .png" alt="Logo Zyntek">
-      <video autoplay muted loop class="logo-video">
-        <source src="logo glitch zyntek.mp4" type="video/mp4">
+      <img src="assets/fotos/logo z .png" alt="Logo Zyntek" width="40" height="40">
+      <video autoplay muted loop playsinline class="logo-video" aria-hidden="true">
+        <source src="assets/videos/logo glitch zyntek.mp4" type="video/mp4">
       </video>
     </div>
 
-    <!-- Navegação desktop -->
-    <nav>
+    <nav aria-label="Navegação principal">
       <a href="#home"     class="nav-link active">Home</a>
       <a href="#sobre"    class="nav-link">Sobre</a>
       <a href="#servicos" class="nav-link">Serviços</a>
@@ -60,19 +61,30 @@
       <a href="#contatos" class="nav-link">Contatos</a>
     </nav>
 
-    <button class="btn-header">Falar conosco</button>
+    </div><!-- /navbar-extras -->
 
-    <!-- Botão hamburguer (visível apenas em mobile) -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20melhor%20a%20empresa%20e%20seus%20servi%C3%A7os."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn-header btn-zyntek"
+       aria-label="Falar com a Zyntek pelo WhatsApp">
+      <!-- A) Ícone </> pintado de roxo (classe btn-code já aplica a cor var(--primary)) -->
+      <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+      <span class="btn-label">Falar conosco</span>
+    </a>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- Menu lateral mobile -->
-    <div class="mobile-menu" id="mobileMenu">
-      <nav class="mobile-nav">
-        <a href="#home"     class="nav-link active">Home</a>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação mobile">
+      <nav class="mobile-nav" aria-label="Navegação mobile">
+        <a href="#home"     class="nav-link">Home</a>
         <a href="#sobre"    class="nav-link">Sobre</a>
         <a href="#servicos" class="nav-link">Serviços</a>
         <a href="#equipe"   class="nav-link">Equipe</a>
@@ -81,8 +93,7 @@
       </nav>
     </div>
 
-    <!-- Overlay escurece o fundo quando menu mobile está aberto -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
   </header>
 
@@ -90,18 +101,16 @@
   <!-- =====================================================
        SEÇÃO: HOME / HERO
   ====================================================== -->
-  <section id="home" class="hero">
+  <section id="home" class="hero" aria-label="Seção principal">
 
-    <!-- Vídeo de fundo com baixa opacidade (decorativo) -->
-    <video autoplay muted loop class="bg-video">
-      <source src="LOGO GLITCH.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="bg-video" aria-hidden="true">
+      <source src="assets/videos/LOGO GLITCH.mp4" type="video/mp4">
     </video>
 
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-container">
 
-      <!-- Bloco de texto principal -->
       <div class="hero-text-block reveal-left">
 
         <p class="mini-title typing"
@@ -109,34 +118,36 @@
         </p>
 
         <h1 class="hero-title">
-          <span class="title-white typing"
-                data-text="Construindo o">
-          </span>
- 
-          <!-- Texto com efeito glitch + neon pulsante -->
+          <span class="title-white typing" data-text="Construindo o"></span>
           <span class="code-line typing glitch-text purple-neon"
                 id="future-text"
-                data-text="< futuro digital />">
+                data-text="&lt; futuro digital /&gt;">
           </span>
- 
-          <span class="title-white typing"
-                data-text="das empresas">
-          </span>
+          <span class="title-white typing" data-text="das empresas"></span>
         </h1>
-        
+
         <p class="hero-description typing"
-           data-text="Desenvolvemos soluções modernas, interfaces futuristas e experiências digitais de alto impacto.">
+           data-text="Unimos design de ponta, inteligência artificial e engenharia de software para posicionar sua empresa na vanguarda do mercado digital.">
         </p>
 
         <div class="hero-buttons reveal reveal-bottom delay-6">
-          <a href="#" class="btn-primary">Solicitar Projeto</a>
+          <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20vim%20pelo%20site%20e%20tenho%20interesse%20em%20solicitar%20um%20projeto.%20Podemos%20conversar%3F"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-primary btn-zyntek"
+             aria-label="Solicitar projeto pelo WhatsApp">
+            <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="btn-label">Solicitar Projeto</span>
+          </a>
         </div>
 
       </div>
 
-      <!-- Mascote flutuante -->
       <div class="hero-image-block reveal-right floating-element">
-        <img src="zynk_home-removebg-preview.png" alt="Mascote Zynk" class="hero-mascot">
+        <img src="assets/fotos/zynk_home-removebg-preview.png"
+             alt="Mascote Zynk"
+             class="hero-mascot"
+             width="720">
       </div>
 
     </div>
@@ -147,91 +158,91 @@
   <!-- =====================================================
        SEÇÃO: SOBRE
   ====================================================== -->
-  <section id="sobre">
+  <section id="sobre" aria-labelledby="sobre-titulo">
 
-    <video autoplay muted loop playsinline class="sobre-bg-video">
-      <source src="fundos html5.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="sobre-bg-video" aria-hidden="true">
+      <source src="assets/videos/fundos html52.mp4" type="video/mp4">
     </video>
 
-    <div class="sobre-overlay"></div>
+    <div class="sobre-overlay" aria-hidden="true"></div>
 
-    <!-- Bloco superior: texto + imagem -->
     <div class="sobre-top">
 
       <div class="sobre-text reveal-left">
+        <!-- A) Badge de seção padronizado — classe section-badge (cápsula roxa) -->
         <div class="section-title left-align">
-          <span>Sobre nós</span>
-          <h2>Engenharia Digital para Negócios Visionários</h2>
+          <span class="section-badge">SOBRE NÓS</span>
+          <h2 id="sobre-titulo">A Engenharia Tecnológica por trás do Crescimento da sua Empresa</h2>
         </div>
-
         <p>
-          A Zyntek nasceu com o propósito claro de desenvolver
-          <span class="text-purple">sistemas e automações inteligentes</span>
-          para empresas e profissionais autônomos. Nossa missão é alavancar o seu alcance
-          no ecossistema digital, transformando visitantes em
-          <span class="text-purple">clientes reais</span> para a sua marca.
+          A Zyntek atua na vanguarda do desenvolvimento de software, fundindo engenharia de elite, inteligência artificial e design de alto padrão para ditar o ritmo da <span class="text-purple">inovação digital</span>. Não construímos apenas códigos ou sites comuns; criamos ecossistemas robustos projetados para estruturar, blindar e expandir operações comerciais de forma escalável.
         </p>
 
         <p>
-          Acreditamos genuinamente que a tecnologia é a chave para o sucesso das empresas
-          modernas. Por isso, atuamos como a
-          <span class="text-purple">força motriz digital</span>
-          para negócios visionários, combinando engenharia de software de ponta, design
-          estratégico e automação para gerar
-          <span class="text-purple">lucro, escala e domínio</span> de mercado.
+          Combinamos a mentalidade ágil da nova geração tech à solidez estratégica que o mercado corporativo exige. Somos a força motriz dedicada a gerar <span class="text-purple">lucro, automação e autoridade máxima</span> para o seu negócio, transformando a tecnologia em um ativo insubstituível para a liderança do seu mercado.
         </p>
 
-        <p>
-          Criamos soluções
-          <span class="text-purple">insubstituíveis e exclusivas</span>.
-          Conectamos a sua marca diretamente ao topo do mercado, atendendo desde
-          profissionais independentes até grandes corporações. O sucesso no mundo digital
-          não é o futuro, <span class="text-purple">é o agora</span>
-          — e a sua empresa não pode ficar de fora.
-        </p>
       </div>
 
       <div class="sobre-visual reveal-right floating-element">
-        <img src="zynk dev.png" alt="Mascote Zynk">
+        <img src="assets/fotos/zynk dev.png" alt="Mascote Zynk desenvolvendo">
       </div>
 
     </div>
 
     <!-- Cards: Missão, Valores, Visão -->
-    <div class="sobre-grid">
+    <div class="sobre-grid" role="list" aria-label="Pilares da Zyntek">
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="missao.png" alt="Ícone de Foguete Zynk - Missão">
+      <article class="premium-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/missão.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="about-card-content centered-content">
+          <h3>Missão</h3>
+          <p>
+            Desenvolver <span class="text-purple">sistemas de alta performance</span> 
+            e inteligências que aceleram o crescimento, automatizam processos e escalam o faturamento de grandes negócios.
+          </p>          
+          <div class="about-icon" aria-hidden="true">
+            <img src="assets/icones/missao.png" alt="">
+          </div>
         </div>
-        <h3>Missão</h3>
-        <p>
-          Desenvolver <span class="text-purple">soluções digitais inteligentes</span>
-          que aceleram o crescimento e a eficiência de empresas.
-        </p>
-      </div>
+      </article>
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="valores.png" alt="Ícone de Diamante Zynk - Valores">
+      <article class="premium-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/valores.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="about-card-content centered-content">
+          <h3>Valores</h3>
+          <p>
+          Garantir <span class="text-purple">engenharia de elite</span>, 
+          transparência radical e uma busca implacável pela evolução contínua em cada linha de código que entregamos.
+          </p>
+          <div class="about-icon" aria-hidden="true">
+            <img src="assets/icones/valores.png" alt="">
+          </div>
         </div>
-        <h3>Valores</h3>
-        <p>
-          Garantir <span class="text-purple">alinhamento estratégico</span>,
-          transparência e foco em melhoria contínua.
-        </p>
-      </div>
+      </article>
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="visao.png" alt="Ícone de Olhar Zynk - Visão">
+      <article class="premium-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/visão.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="about-card-content centered-content">
+          <h3>Visão</h3>
+          <p>
+            Consolidar a Zyntek como a <span class="text-purple">autoridade máxima</span> 
+            em disrupção tecnológica, inteligência artificial e ecossistemas digitais do futuro.
+          </p>
+          <div class="about-icon" aria-hidden="true">
+            <img src="assets/icones/visao.png" alt="">
+          </div>
         </div>
-        <h3>Visão</h3>
-        <p>
-          Consolidar a Zyntek a <span class="text-purple">principal referência</span>
-          em inovação tecnológica e transformação digital.
-        </p>
-      </div>
+      </article>
 
     </div>
 
@@ -241,82 +252,102 @@
   <!-- =====================================================
        SEÇÃO: SERVIÇOS
   ====================================================== -->
-  <section id="servicos">
+  <section id="servicos" aria-labelledby="servicos-titulo">
 
-    <video autoplay muted loop playsinline class="servicos-bg-video">
-      <source src="fundos html5.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="servicos-bg-video" aria-hidden="true">
+      <source src="assets/videos/fundos html52.mp4" type="video/mp4">
     </video>
 
-    <div class="servicos-overlay"></div>
+    <div class="servicos-overlay" aria-hidden="true"></div>
 
-    <!-- Bloco superior: imagem + texto -->
     <div class="servicos-top">
 
       <div class="servicos-visual reveal-left floating-element">
-        <img src="zynk telas.png" alt="Mascote Zynk">
+        <img src="assets/fotos/zynk telas.png" alt="Mascote Zynk com telas de projetos">
       </div>
 
       <div class="servicos-text reveal-right">
+        <!-- A) Badge padronizado -->
         <div class="section-title left-align">
-          <span>SERVIÇOS</span>
-          <h2>Soluções digitais para empresas modernas</h2>
+          <span class="section-badge">SERVIÇOS</span>
+          <h2 id="servicos-titulo">Soluções digitais para empresas modernas</h2>
         </div>
 
-        <p>
-          Desenvolvemos sistemas sob medida, automações inteligentes e integrações avançadas
-          que transformam a operação do seu negócio. Criamos
-          <span class="text-purple">experiências digitais premium</span>
-          focadas totalmente em performance, segurança e resultados reais.
-        </p>
+      <p>
+        Não criamos apenas sistemas, desenvolvemos ecossistemas tecnológicos sob medida, automações robustas e integrações de elite que redefinem a operação do seu negócio. Projetamos 
+        <span class="text-purple">experiências digitais de altíssimo impacto</span> 
+        focadas em performance extrema, segurança inviolável e lucratividade real.
+      </p>
 
-        <p>
-          Tudo é planejado estrategicamente para
-          <span class="text-purple">acelerar processos</span>
-          e gerar escala para a sua marca no mercado digital.
-        </p>
+      <p>
+        Tudo é planejado sob uma ótica estéril e estratégica para 
+        <span class="text-purple">automatizar sua operação e gerar escala massiva</span> 
+        para a sua marca no ecossistema digital. Seu produto moldado com a tecnologia que dita as regras do amanhã.
+      </p>
       </div>
 
     </div>
 
-    <!-- Cards de serviços -->
-    <div class="servicos-grid">
+    <!-- D) Cards de serviço — ícone fixado no canto inferior direito + hover integrado no CSS -->
+    <div class="servicos-grid" role="list" aria-label="Serviços oferecidos">
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="web.png" alt="Ícone de Navegador Zynk - Desenvolvimento Web">
+      <article class="premium-card servico-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/desenvolvimento web.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="card-top-line" aria-hidden="true"></div>
+        <div class="about-card-content servico-content">
+          <h3>Aplicações Web & Design</h3>
+          <p>
+            Criação de <span class="text-purple">landing pages de alta conversão</span> 
+            e plataformas institucionais sob medida que posicionam sua marca como autoridade e transformam visitantes em clientes.
+          </p>
+          <p class="card-examples">Landing Pages • E-commerce de Elite • Portais Corporativos</p>
         </div>
-        <h3>Desenvolvimento Web</h3>
-        <p>
-          Criação de <span class="text-purple">landing pages de alta conversão</span>,
-          lojas virtuais completas e sites institucionais sob medida para o seu negócio.
-        </p>
-        <p class="card-examples">Landing Pages • E-commerce (Lojas Virtuais).</p>
-      </div>
+        <!-- D) Ícone fixado no canto inferior direito do card -->
+        <div class="servico-icon-corner" aria-hidden="true">
+          <img src="assets/icones/web.png" alt="">
+        </div>
+      </article>
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="automacao.png" alt="Ícone de Engrenagem Zynk - Automação">
+      <article class="premium-card servico-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/automacao.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="card-top-line" aria-hidden="true"></div>
+        <div class="about-card-content servico-content">
+          <h3>Automação Inteligente & IA</h3>
+          <p>
+            Desenvolvimento de <span class="text-purple">chatbots avançados</span> 
+            e arquitetura completa de fluxos autônomos para eliminar tarefas manuais e escalar sua operação.
+          </p>
+          <p class="card-examples">Atendimento Inteligente • Vendas Automatizadas • Integrações com IA</p>
         </div>
-        <h3>Automação</h3>
-        <p>
-          Desenvolvimento de <span class="text-purple">chatbots inteligentes</span>
-          e automação completa de fluxos de atendimento para escalar suas vendas
-          e reduzir o trabalho manual.
-        </p>
-        <p class="card-examples">Automação de Atendimento e Vendas • Integração de IA.</p>
-      </div>
+        <div class="servico-icon-corner" aria-hidden="true">
+          <img src="assets/icones/automacao.png" alt="">
+        </div>
+      </article>
 
-      <div class="premium-card reveal-card">
-        <div class="about-icon">
-          <img src="software.png" alt="Ícone de Laptop Zynk - Desenvolvimento de Software">
+      <article class="premium-card servico-card reveal-card" role="listitem">
+        <video autoplay muted loop playsinline class="card-bg-video" aria-hidden="true">
+          <source src="assets/videos/desenvolviemnto de software.mp4" type="video/mp4">
+        </video>
+        <div class="card-video-overlay" aria-hidden="true"></div>
+        <div class="card-top-line" aria-hidden="true"></div>
+        <div class="about-card-content servico-content">
+          <h3>Sistemas Sob Medida & APIs</h3>
+          <p>
+            Construção de <span class="text-purple">plataformas exclusivas</span> 
+            com dashboards estratégicos e gestão operacional completa para automatizar e blindar as regras do seu negócio.
+          </p>
+          <p class="card-examples">Sistemas ERP/CRM • Aplicações SaaS • Dashboards Gerenciais</p>
         </div>
-        <h3>Desenvolvimento de Software</h3>
-        <p>
-          Construção de <span class="text-purple">plataformas web exclusivas</span>
-          com dashboards financeiros, painéis de gestão e controle de processos operacionais.
-        </p>
-        <p class="card-examples">Sistemas de Agendamento • Gestão de Restaurantes, Barbearias e Academias.</p>
-      </div>
+        <div class="servico-icon-corner" aria-hidden="true">
+          <img src="assets/icones/software.png" alt="">
+        </div>
+      </article>
 
     </div>
 
@@ -324,68 +355,131 @@
 
 
   <!-- =====================================================
-       SEÇÃO: EQUIPE
+       SEÇÃO: EQUIPE — CARROSSEL PREMIUM
   ====================================================== -->
-  <section id="equipe">
+  <section id="equipe" aria-labelledby="equipe-titulo">
 
-    <video autoplay muted loop playsinline class="equipe-bg-video">
-      <source src="fundo roxo geometrico.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="equipe-bg-video" aria-hidden="true">
+      <source src="assets/videos/fundo roxo geometrico.mp4" type="video/mp4">
     </video>
 
-    <div class="equipe-overlay"></div>
+    <div class="equipe-overlay" aria-hidden="true"></div>
 
+    <!-- A) Badge padronizado -->
     <div class="section-title">
-      <span>EQUIPE</span>
-      <h2>Mentes por trás da inovação</h2>
+      <span class="section-badge">EQUIPE</span>
+      <h2 id="equipe-titulo" class="mb-4" style="margin-bottom: 24px;">Da Garagem ao Topo do Mercado</h2>
+    <p style="margin-bottom: 24px;">
+      A Zyntek nasceu da união de <span class="text-purple">três mentes obcecadas por tecnologia</span>, conectadas na faculdade por um propósito comum: transformar visões audaciosas em potências de mercado através de engenharia de elite.
+    </p>
+    
+    <p>
+      Mais que código, criamos o <strong>Zynk</strong>, nosso guardião tecnológico e identidade cyberpunk para simbolizar uma entrega única. Somos especialistas em <span class="text-purple">soluções sob medida</span> que não apenas entregam eficiência, mas garantem que o seu negócio lidere o mercado com autoridade, segurança e inovação constante.
+    </p>
     </div>
 
-    <!-- Cards de membros — data-member referenciado pelo JS para popular o modal -->
-    <div class="equipe-grid">
+    <div class="team-carousel-wrapper" aria-label="Carrossel de membros da equipe">
 
-      <div class="team-card reveal-card magnetic-card" data-member="hideki">
-        <div class="card-image-wrapper">
-          <img src="HENRIQUE HIDEKI.png" alt="Henrique Hideki" class="member-photo">
+      <button class="carousel-arrow carousel-arrow-left" aria-label="Membro anterior">
+        <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+      </button>
+
+      <div class="team-carousel-track" id="teamCarouselTrack">
+
+        <!-- Zynk AI -->
+        <div class="carousel-slide"
+             data-member="zynk"
+             data-pos="hidden-back"
+             tabindex="0"
+             role="button"
+             aria-label="Ver perfil: Zynk AI">
+          <div class="carousel-aura" aria-hidden="true"></div>
+          <div class="carousel-energy-ring" aria-hidden="true"></div>
+          <div class="carousel-card-inner">
+            <div class="card-image-wrapper">
+              <img src="assets/fotos/zynkcard.png" alt="Zynk AI">
+            </div>
+            <div class="card-info">
+              <h3>Zynk AI</h3>
+              <p class="role">IA | Núcleo Neural</p>
+            </div>
+          </div>
         </div>
-        <div class="card-info">
-          <h3>Henrique Hideki</h3>
-          <p class="role">CLO & Lead Dev | Diretor Jurídico</p>
-          <img src="zynk-logo-small.png" alt="Zynk Brand Background" class="card-back-logo">
+
+        <!-- Hideki -->
+        <div class="carousel-slide"
+             data-member="hideki"
+             data-pos="left"
+             tabindex="0"
+             role="button"
+             aria-label="Ver perfil: Henrique Hideki">
+          <div class="carousel-aura" aria-hidden="true"></div>
+          <div class="carousel-energy-ring" aria-hidden="true"></div>
+          <div class="carousel-card-inner">
+            <div class="card-image-wrapper">
+              <img src="assets/fotos/HENRIQUE HIDEKI.png" alt="Henrique Hideki">
+            </div>
+            <div class="card-info">
+              <h3>Henrique Hideki</h3>
+              <p class="role">CLO | Diretor Jurídico</p>
+            </div>
+          </div>
         </div>
+
+        <!-- Levy -->
+        <div class="carousel-slide"
+             data-member="levy"
+             data-pos="center"
+             tabindex="0"
+             role="button"
+             aria-label="Ver perfil: Levy Andrade">
+          <div class="carousel-aura" aria-hidden="true"></div>
+          <div class="carousel-energy-ring" aria-hidden="true"></div>
+          <div class="carousel-card-inner">
+            <div class="card-image-wrapper">
+              <img src="assets/fotos/LEVY ANDRADE.png" alt="Levy Andrade">
+            </div>
+            <div class="card-info">
+              <h3>Levy Andrade</h3>
+              <p class="role">COO | Diretor de Operações</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soares -->
+        <div class="carousel-slide"
+             data-member="soares"
+             data-pos="right"
+             tabindex="0"
+             role="button"
+             aria-label="Ver perfil: Henrique Soares">
+          <div class="carousel-aura" aria-hidden="true"></div>
+          <div class="carousel-energy-ring" aria-hidden="true"></div>
+          <div class="carousel-card-inner">
+            <div class="card-image-wrapper">
+              <img src="assets/fotos/HENRIQUE SOARES.png" alt="Henrique Soares">
+            </div>
+            <div class="card-info">
+              <h3>Henrique Soares</h3>
+              <p class="role">CTO | Diretor de Tecnologia</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="team-card reveal-card magnetic-card" data-member="levy">
-        <div class="card-image-wrapper">
-          <img src="LEVY ANDRADE.png" alt="Levy Andrade" class="member-photo">
-        </div>
-        <div class="card-info">
-          <h3>Levy Andrade</h3>
-          <p class="role">COO & CDO | Diretor de Operações</p>
-          <img src="zynk-logo-small.png" alt="Zynk Brand Background" class="card-back-logo">
-        </div>
-      </div>
+      <button class="carousel-arrow carousel-arrow-right" aria-label="Próximo membro">
+        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+      </button>
 
-      <div class="team-card reveal-card magnetic-card" data-member="soares">
-        <div class="card-image-wrapper">
-          <img src="HENRIQUE SOARES.png" alt="Henrique Soares" class="member-photo">
-        </div>
-        <div class="card-info">
-          <h3>Henrique Soares</h3>
-          <p class="role">CTO | Diretor de Infraestrutura</p>
-          <img src="zynk-logo-small.png" alt="Zynk Brand Background" class="card-back-logo">
-        </div>
-      </div>
+    </div>
 
-      <div class="team-card zynk-card reveal-card magnetic-card" data-member="zynk">
-        <div class="card-image-wrapper">
-          <img src="ZYNK.png" alt="Zynk AI">
-        </div>
-        <div class="card-info">
-          <h3>Zynk AI</h3>
-          <p class="role">Núcleo de Inteligência e Automação</p>
-          <img src="zynk-logo-small.png" alt="Zynk Brand Background" class="card-back-logo">
-        </div>
-      </div>
-
+    <!-- Dots de navegação -->
+    <div class="carousel-dots" role="tablist" aria-label="Navegar membros da equipe">
+      <button class="carousel-dot active" data-index="0" role="tab" aria-label="Levy Andrade" aria-selected="true"></button>
+      <button class="carousel-dot" data-index="1" role="tab" aria-label="Henrique Soares" aria-selected="false"></button>
+      <button class="carousel-dot" data-index="2" role="tab" aria-label="Zynk AI" aria-selected="false"></button>
+      <button class="carousel-dot" data-index="3" role="tab" aria-label="Henrique Hideki" aria-selected="false"></button>
     </div>
 
   </section>
@@ -393,23 +487,20 @@
 
   <!-- =====================================================
        MODAL: EQUIPE
-       Aberto via JS ao clicar em um team-card
   ====================================================== -->
-  <div id="team-modal" class="modal">
+  <div id="team-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-member-name">
 
     <div class="modal-content">
 
-      <!-- Fundo animado do modal -->
-      <div class="modal-video-bg">
+      <div class="modal-video-bg" aria-hidden="true">
         <video autoplay muted loop playsinline>
-          <source src="fundo roxo geometrico.mp4" type="video/mp4">
+          <source src="assets/videos/fundo roxo geometrico.mp4" type="video/mp4">
         </video>
-        <img src="zynk-logo-small.png" class="modal-zynk-bg">
         <div class="modal-video-overlay"></div>
       </div>
 
-      <button class="premium-modal-close">
-        <div class="close-x">
+      <button class="premium-modal-close" aria-label="Fechar modal">
+        <div class="close-x" aria-hidden="true">
           <span></span>
           <span></span>
         </div>
@@ -417,27 +508,26 @@
 
       <div class="modal-body-layout">
 
-        <!-- Foto circular com borda roxa -->
         <div class="modal-left">
           <div class="profile-circle-wrapper">
-            <img id="modal-member-img" src="" alt="Foto do Membro">
+            <img id="modal-member-img" src="" alt="Foto do membro da equipe">
           </div>
         </div>
 
-        <!-- Informações dinâmicas injetadas pelo JS -->
         <div class="modal-right">
           <span class="modal-greet" id="modal-member-greet">Olá, eu me chamo</span>
           <h2 id="modal-member-name">Nome do Membro</h2>
           <h3 id="modal-member-role">Cargo</h3>
-          <p class="modal-bio" id="modal-member-bio">Descrição curta e profissional aqui.</p>
+          <p class="modal-bio" id="modal-member-bio">Descrição profissional aqui.</p>
           <div class="modal-tags" id="modal-member-tags"></div>
 
           <div class="modal-actions">
-            <a href="#" id="modal-btn-portfolio" target="_blank" class="btn-modal secondary">
-              <i class="ri-folder-user-line"></i> Portfólio
+            <a href="#" id="modal-btn-portfolio" target="_blank" rel="noopener noreferrer" class="btn-modal secondary">
+              <i class="ri-folder-user-line" aria-hidden="true"></i> Portfólio
             </a>
-            <a href="#" id="modal-btn-contact" target="_blank" class="btn-modal primary">
-              <i class="ri-whatsapp-line"></i> Entrar em contato
+            <a href="#" id="modal-btn-contact" target="_blank" rel="noopener noreferrer" class="btn-modal primary btn-zyntek">
+              <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+              <span class="btn-label"><i class="ri-whatsapp-line" aria-hidden="true"></i> Entrar em contato</span>
             </a>
           </div>
         </div>
@@ -450,140 +540,245 @@
 
 
   <!-- =====================================================
-       SEÇÃO: PROJETOS / CASES
+       SEÇÃO: PROJETOS
   ====================================================== -->
-  <section id="projetos">
+  <section id="projetos" aria-labelledby="projetos-titulo">
 
-    <video autoplay muted loop playsinline class="projetos-bg-video">
-      <source src="fundos html5.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="projetos-bg-video" aria-hidden="true">
+      <source src="assets/videos/fundos html52.mp4" type="video/mp4">
     </video>
 
-    <div class="projetos-overlay"></div>
+    <div class="projetos-overlay" aria-hidden="true"></div>
 
+    <!-- A) Badge padronizado -->
     <div class="section-title">
-      <span>PROJETOS</span>
-      <h2>Soluções que aceleram negócios</h2>
+      <span class="section-badge">PROJETOS</span>
+   <h2 id="projetos-titulo" class="mb-4" style="margin-bottom: 24px;">Soluções que aceleram negócios</h2>
+    <p class="section-subtitle">
+      Cada projeto, uma <span class="text-purple">experiência digital de alto impacto</span><br>
+      desenvolvida estrategicamente <span class="text-purple">sob medida</span>
+    </p>
     </div>
 
-    <!-- Grid de projetos — data-project referenciado pelo JS para popular o modal -->
-    <div class="projetos-grid">
+    <!-- E) Grade de projetos — ícones sem fundo/borda, flutuantes -->
+    <div class="projetos-grid" role="list" aria-label="Projetos da Zyntek">
 
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="landing">
-        <div class="icon-container">
-          <img src="landing-page.png" alt="Ícone Landing Page">
-        </div>
-        <div class="project-info">
-          <h3>Landing Page</h3>
-          <p>Páginas de alta performance totalmente focadas em
-            <span class="purple-highlight">vendas e conversão</span> imediata.</p>
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="landing"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Landing Page">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/landing page.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Páginas de Alta Conversão</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <!-- E) Ícone limpo sem container -->
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/landing-page.png" alt="">
+          </div>
         </div>
       </div>
 
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="agenda">
-        <div class="icon-container">
-          <img src="agendamento.png" alt="Ícone Agendamento">
-        </div>
-        <div class="project-info">
-          <h3>Sistema de Agendamento</h3>
-          <p><span class="purple-highlight">Automação inteligente</span>
-            de horários para eliminar filas e reter clientes 24/7.</p>
-        </div>
-      </div>
-
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="restaurante">
-        <div class="icon-container">
-          <img src="restaurante.png" alt="Ícone Restaurante">
-        </div>
-        <div class="project-info">
-          <h3>Sistema Restaurante</h3>
-          <p>Controle total com dashboards financeiros para maximizar seu
-            <span class="purple-highlight">lucro e gestão operacional</span>.</p>
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="agenda"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Sistema de Agendamento">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/AGENDAMENTO.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Plataforma de Agendamento</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/agendamento.png" alt="">
+          </div>
         </div>
       </div>
 
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="barbearia">
-        <div class="icon-container">
-          <img src="barbearia.png" alt="Ícone Barbearia">
-        </div>
-        <div class="project-info">
-          <h3>Sistema Barbearia</h3>
-          <p>Gestão premium de agendamentos e faturamento focada em
-            <span class="purple-highlight">fidelização e experiência</span>.</p>
-        </div>
-      </div>
-
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="ecommerce">
-        <div class="icon-container">
-          <img src="ecommerce.png" alt="Ícone E-commerce">
-        </div>
-        <div class="project-info">
-          <h3>E-commerce</h3>
-          <p>Sua loja virtual moderna, integrada e estruturada para aguentar
-            <span class="purple-highlight">escala contínua</span>.</p>
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="restaurante"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Sistema Restaurante">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/sistema restaurante.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Sistemas para Restaurantes</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/restaurante.png" alt="">
+          </div>
         </div>
       </div>
 
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="chatbot">
-        <div class="icon-container">
-          <img src="chatbot.png" alt="Ícone Chatbot">
-        </div>
-        <div class="project-info">
-          <h3>Chatbot Inteligente</h3>
-          <p>Atendimento automatizado via IA para qualificar leads e
-            <span class="purple-highlight">vender no piloto automático</span>.</p>
-        </div>
-      </div>
-
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="fitness">
-        <div class="icon-container">
-          <img src="fitness.png" alt="Ícone Gestão Fitness">
-        </div>
-        <div class="project-info">
-          <h3>Gestão Fitness</h3>
-          <p>Ecossistema completo para academias e consultorias focado em
-            <span class="purple-highlight">alta performance</span>.</p>
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="barbearia"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Sistema Barbearia">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/sistema de barbearia.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Sistemas para Barbearias</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/barbearia.png" alt="">
+          </div>
         </div>
       </div>
 
-      <div class="premium-card project-card reveal-card magnetic-card" data-project="custom">
-        <div class="icon-container">
-          <img src="sistemas-personalizados.png" alt="Ícone Sistemas Personalizados">
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="ecommerce"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: E-commerce">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/ecommerce.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Lojas Virtuais Completas</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/ecommerce.png" alt="">
+          </div>
         </div>
-        <div class="project-info">
-          <h3>Sistemas Personalizados</h3>
-          <p>Software para superar os
-            <span class="purple-highlight">desafios da sua empresa</span>.</p>
+      </div>
+
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="chatbot"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Chatbot Inteligente">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/chatbot.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Atendimento Automático IA</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/chatbot.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="fitness"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Gestão Fitness">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/gestao fitness.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Sistemas para Academias</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/fitness.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="premium-card project-card reveal-card magnetic-card"
+           data-project="custom"
+           role="button"
+           tabindex="0"
+           aria-label="Ver detalhes: Sistemas Personalizados">
+        <video autoplay muted loop playsinline class="project-card-video" aria-hidden="true">
+          <source src="assets/videos/sistema personalizados.mp4" type="video/mp4">
+        </video>
+        <div class="project-card-overlay" aria-hidden="true"></div>
+        <div class="project-card-content">
+          <h3>Sistemas Sob Medida</h3>
+          <div class="project-hover-content">
+            <button class="project-btn">Saiba Mais</button>
+          </div>
+          <div class="project-card-icon project-card-icon--clean" aria-hidden="true">
+            <img src="assets/icones/sistemas-personalizados.png" alt="">
+          </div>
         </div>
       </div>
 
     </div>
 
-    <!-- CTA — bloco de chamada para contato -->
+    <!-- F) CTA com vídeo duplo — vídeo externo (page bg) + vídeo interno (dentro do card) -->
     <div class="projetos-cta super-cta-card">
 
-      <video autoplay muted loop playsinline class="cta-bg-video">
-        <source src="fundos html5.mp4" type="video/mp4">
+      <!--
+        CAMADA 0 — Vídeo externo de fundo da página (já existia, não alterado)
+        Este vídeo fica ATRÁS de tudo via z-index baixo.
+      -->
+      <video autoplay muted loop playsinline class="cta-bg-video" aria-hidden="true">
+        <source src="assets/videos/fundos html5.mp4" type="video/mp4">
       </video>
 
-      <div class="cta-overlay"></div>
+      <!--
+        CAMADA 1 — Overlay escuro sobre o vídeo externo
+      -->
+      <div class="cta-overlay" aria-hidden="true"></div>
 
+      <!--
+        CAMADA 2 — Vídeo INTERNO rodando dentro do retângulo do CTA.
+        Usa blend-mode "screen" para se integrar sem cobrir o conteúdo.
+        z-index controlado para ficar entre o overlay e o conteúdo.
+      -->
+      <video autoplay muted loop playsinline class="cta-inner-video" aria-hidden="true">
+        <source src="assets/videos/20260606-0135-36.3789739.mp4" type="video/mp4">
+        <!-- Fallback caso o arquivo específico não exista — usa o mesmo vídeo do fundo -->
+        <source src="assets/videos/fundos html5.mp4" type="video/mp4">
+      </video>
+
+      <!--
+        CAMADA 3 — Overlay adicional para garantir legibilidade do texto
+        sobre o vídeo interno
+      -->
+      <div class="cta-inner-overlay" aria-hidden="true"></div>
+
+      <!--
+        CAMADA 4 (foreground) — Conteúdo textual e botão, sempre acima de tudo
+      -->
       <div class="cta-content">
 
         <div class="cta-text reveal-left">
-          <h2>Pronto para construir o próximo grande capítulo da sua empresa?</h2>
-          <p>
-            Não criamos apenas códigos, moldamos ferramentas que geram
-            <span class="highlight">escala</span>,
-            <span class="highlight">automação</span> e
-            <span class="highlight">liderança de mercado</span>.
-            Desenvolvemos interfaces de alto padrão e sistemas sob medida desenhados
-            exclusivamente para acelerar o crescimento do seu negócio.
-          </p>
-          <a href="#contatos" class="btn-primary">Entrar em contato</a>
+       <h2>Pronto para projetar o <span class="highlight">futuro</span><br>da sua empresa?</h2>
+          <p class="cta-emotional-text">
+          Se você chegou até aqui, não foi por acaso. Sabemos o quanto custou transformar sua visão em uma empresa real. Cada desafio superado moldou o negócio que você lidera hoje, mas grandes líderes sabem a hora de dar o próximo passo. O seu legado merece mais do que ferramentas comuns, merece engenharia de elite. Na <span class="highlight">Zyntek</span>, construímos o motor tecnológico para automatizar sua operação e escalar seus resultados. O futuro do seu mercado já começou. <strong>Você vai apenas <span class="highlight">assistir</span> ou vai <span class="highlight">liderar</span> conosco? Junte-se ao ecossistema Zyntek.</strong>
+        </p>
+          <a href="#contatos"
+             class="btn-primary btn-zyntek"
+             aria-label="Ir para seção de contato">
+            <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="btn-label">Entrar em contato</span>
+          </a>
         </div>
 
         <div class="cta-image reveal-right floating-element">
-          <img src="arvore_tech.png" alt="Árvore Tecnológica">
+          <img src="assets/fotos/arvore_tech.png" alt="Árvore Tecnológica Zyntek">
         </div>
 
       </div>
@@ -595,20 +790,19 @@
 
   <!-- =====================================================
        MODAL: PROJETOS
-       Aberto via JS ao clicar em um project-card
   ====================================================== -->
-  <div id="project-modal" class="project-modal">
+  <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
 
     <div class="project-modal-content">
 
-      <video autoplay muted loop playsinline class="project-modal-video">
-        <source src="fundo roxo geometrico.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline class="project-modal-video" aria-hidden="true">
+        <source src="assets/videos/fundo roxo geometrico.mp4" type="video/mp4">
       </video>
 
-      <div class="project-modal-overlay"></div>
+      <div class="project-modal-overlay" aria-hidden="true"></div>
 
-      <button class="close-project-modal">
-        <div class="close-x">
+      <button class="close-project-modal" aria-label="Fechar modal de projeto">
+        <div class="close-x" aria-hidden="true">
           <span></span>
           <span></span>
         </div>
@@ -625,9 +819,33 @@
 
         <p id="project-modal-description">Descrição do projeto.</p>
 
-        <div class="project-modal-buttons">
-          <a href="#" target="_blank" id="project-modal-deploy" class="btn-modal primary">Acessar Deploy</a>
-          <a href="#" target="_blank" id="project-modal-github" class="btn-modal secondary">Repositório GitHub</a>
+        <div class="project-links">
+          <a href="#"
+             id="project-modal-deploy"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="project-demo-btn btn-zyntek">
+            <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="btn-label">Acessar Deploy</span>
+          </a>
+
+          <a href="#"
+             id="project-modal-github"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="project-github-btn">
+            <i class="ri-github-line" aria-hidden="true"></i>
+            Repositório GitHub
+          </a>
+
+          <a href="#"
+             id="project-modal-contact"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="project-contact-btn btn-zyntek">
+            <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="btn-label">Entrar em Contato</span>
+          </a>
         </div>
       </div>
 
@@ -639,77 +857,196 @@
   <!-- =====================================================
        BOTÃO FLUTUANTE — WHATSAPP
   ====================================================== -->
-  <a href="https://wa.me/5500000000000" target="_blank" class="floating-whatsapp">
-    <i class="ri-whatsapp-line"></i>
+  <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20vim%20pelo%20site%20e%20gostaria%20de%20iniciar%20um%20projeto.%20Podemos%20conversar%3F"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="floating-whatsapp"
+     aria-label="Falar com a Zyntek pelo WhatsApp">
+    <i class="ri-whatsapp-line" aria-hidden="true"></i>
+    <span class="floating-text">Iniciar Projeto</span>
   </a>
 
 
   <!-- =====================================================
-       SEÇÃO: CONTATOS / FOOTER
+       SEÇÃO: CONTATOS
   ====================================================== -->
-  <section class="contact-section" id="contatos">
+  <section class="contact-section" id="contatos" aria-labelledby="contatos-titulo">
 
-    <video class="contact-bg-video" autoplay muted loop playsinline>
-      <source src="fundo roxo geometrico.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline class="contact-bg-video" aria-hidden="true">
+      <source src="#" type="video/mp4">
     </video>
 
-    <div class="contact-overlay"></div>
+    <div class="contact-overlay" aria-hidden="true"></div>
 
-    <!-- Glows decorativos de luz roxa -->
-    <div class="contact-glow glow-left"></div>
-    <div class="contact-glow glow-right"></div>
+    <div class="contact-container">
 
-    <div class="contact-content reveal reveal-bottom">
-
-      <h2 class="contact-title">Contatos</h2>
-
-      <div class="contact-texts">
-        <p class="contact-highlight">Dúvidas ou projetos? Vamos conversar.</p>
-        <span class="contact-subtitle">Tecnologia que conecta o futuro.</span>
+      <!-- A) Badge padronizado -->
+      <div class="contact-header">
+        <span class="section-badge">CONTATO</span>
+        <h2 id="contatos-titulo" style="margin-bottom: 16px;">Vamos estruturar o futuro do seu negócio</h2>
+      <p>
+        Agende uma consultoria <span class="text-purple">estratégica</span> e descubra como a tecnologia pode acelerar seu crescimento.
+      </p>
       </div>
 
-      <!-- Ícones de redes sociais e canais de contato -->
-      <div class="contact-icons-wrapper">
+      <div class="contact-grid">
 
-        <a href="https://wa.me/SEUNUMERO" target="_blank" class="contact-item magnetic-card reveal-card">
-          <div class="contact-icon">
-            <img src="logo whatsapp.png" alt="WhatsApp">
+        <!-- B) Card Formulário — título centralizado + ícone </> roxo -->
+        <div class="contact-card form-card">
+          <div class="contact-form-header">
+            <!-- B) Título centralizado -->
+            <h3 class="contact-card-title">
+              <!-- B) Ícone </> pintado de roxo via classe .icon-purple -->
+              <span class="contact-card-icon icon-purple" aria-hidden="true">&lt;/&gt;</span>
+              Vamos dar vida à sua ideia
+            </h3>
+            <p>Detalhe suas necessidades e nossa equipe entrará em contato para uma consultoria inicial.</p>
           </div>
-          <span>WhatsApp</span>
-        </a>
 
-        <a href="https://www.instagram.com/zyntek.conect/" target="_blank" class="contact-item magnetic-card reveal-card">
-          <div class="contact-icon">
-            <img src="logo do insta.png" alt="Instagram">
+          <form id="budgetForm" class="budget-form" novalidate aria-label="Formulário de orçamento">
+
+            <div class="form-group">
+              <label for="inputName">Nome Completo *</label>
+              <div class="form-input-wrapper">
+                <i class="ri-user-line form-icon" aria-hidden="true"></i>
+                <input type="text" id="inputName" name="name"
+                       placeholder="Seu nome completo"
+                       autocomplete="name"
+                       required
+                       aria-required="true"
+                       aria-describedby="errorName">
+              </div>
+              <span class="form-error" id="errorName" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="inputCompany">Nome da Empresa</label>
+              <div class="form-input-wrapper">
+                <i class="ri-building-line form-icon" aria-hidden="true"></i>
+                <input type="text" id="inputCompany" name="company"
+                       placeholder="Nome da empresa (opcional)"
+                       autocomplete="organization">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPhone">Telefone / WhatsApp *</label>
+              <div class="form-input-wrapper">
+                <i class="ri-smartphone-line form-icon" aria-hidden="true"></i>
+                <input type="tel" id="inputPhone" name="phone"
+                       placeholder="(00) 00000-0000"
+                       autocomplete="tel"
+                       required
+                       aria-required="true"
+                       aria-describedby="errorPhone">
+              </div>
+              <span class="form-error" id="errorPhone" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="inputMessage">Descrição da Ideia do Projeto *</label>
+              <div class="form-input-wrapper textarea-wrapper">
+                <i class="ri-lightbulb-line form-icon" aria-hidden="true"></i>
+                <textarea id="inputMessage" name="message"
+                          placeholder="Descreva o desafio do seu negócio ou a solução que deseja desenvolver..."
+                          rows="5"
+                          required
+                          aria-required="true"
+                          aria-describedby="errorMessage"></textarea>
+              </div>
+              <span class="form-error" id="errorMessage" role="alert"></span>
+            </div>
+
+            <button type="submit" class="contact-btn btn-zyntek">
+              <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+              <span class="btn-label">Inicie seu Projeto</span>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- B) Card Hub Digital — título centralizado + ícone de share roxo -->
+        <div class="contact-card social-card">
+
+          <div class="social-hub-header">
+            <!-- B) Título centralizado, ícone de compartilhamento pintado de roxo -->
+            <h3 class="contact-card-title">
+              <span class="contact-card-icon icon-purple" aria-hidden="true">
+                <i class="ri-share-line" aria-hidden="true"></i>
+              </span>
+              Hub Digital
+            </h3>
           </div>
-          <span>Instagram</span>
-        </a>
 
-        <a href="https://github.com/SEUUSUARIO" target="_blank" class="contact-item magnetic-card reveal-card">
-          <div class="contact-icon">
-            <img src="logo github.png" alt="GitHub">
+          <!-- C) Grade de redes sociais — 5 botões numa linha só (WhatsApp, Instagram, GitHub, LinkedIn, E-mail) -->
+          <div class="social-grid social-grid--5col">
+
+            <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-item"
+               aria-label="WhatsApp da Zyntek">
+              <img src="assets/icones/logo whatsapp.png" alt="">
+              <span>WhatsApp</span>
+            </a>
+
+            <a href="https://www.instagram.com/zyntek.conect/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-item"
+               aria-label="Instagram da Zyntek">
+              <img src="assets/icones/logo do insta.png" alt="">
+              <span>Instagram</span>
+            </a>
+
+            <a href="https://github.com/zyntekconect-source/zyntekconect-source"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-item social-item-github"
+               aria-label="GitHub da Zyntek">
+              <img src="assets/icones/logo github.png" alt="">
+              <span>GitHub</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/zyntek-conect-b50616412/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-item"
+               aria-label="LinkedIn da Zyntek">
+              <img src="assets/icones/logo linkedin.png" alt="">
+              <span>LinkedIn</span>
+            </a>
+
+            <!-- C) E-mail movido para ao lado do LinkedIn — mesma linha -->
+            <a href="mailto:zyntek.conect@gmail.com"
+               class="social-item"
+               aria-label="E-mail da Zyntek">
+              <img src="assets/icones/logo e-mail.png" alt="">
+              <span>E-mail</span>
+            </a>
+
           </div>
-          <span>GitHub</span>
-        </a>
 
-        <a href="https://www.linkedin.com/in/zyntek-conect-b50616412/" target="_blank" class="contact-item magnetic-card reveal-card">
-          <div class="contact-icon">
-            <img src="logo linkedin.png" alt="LinkedIn">
+          <!-- C) Imagem do mascote Zynk inserida abaixo dos botões -->
+          <div class="hub-mascot-wrapper" aria-hidden="true">
+            <img src="assets/fotos/LOGO FUNDO.png"
+                 alt="Mascote Zynk"
+                 class="hub-mascot-img">
           </div>
-          <span>LinkedIn</span>
-        </a>
 
-        <a href="mailto:zyntek.conect@gmail.com" class="contact-item">
-          <div class="contact-icon">
-            <img src="logo e-mail.png" alt="Email">
+          <div class="social-info">
+            <p>Consultoria estratégica em sistemas, automações e soluções digitais de alto impacto.</p>
+            <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20melhor%20a%20empresa%20e%20como%20trabalham."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-conhecer btn-zyntek">
+              <span class="btn-code" aria-hidden="true">&lt;/&gt;</span>
+              <span class="btn-label">Conhecer a Zyntek</span>
+            </a>
           </div>
-          <span>Email</span>
-        </a>
 
-      </div>
+        </div>
 
-      <div class="contact-zynk">
-        <img src="zynk-logo-small.png" alt="Mascote Zynk">
       </div>
 
     </div>
@@ -718,44 +1055,169 @@
 
 
   <!-- =====================================================
-       JAVASCRIPT
+       FAQ
   ====================================================== -->
-  <script src="script.js"></script>
+  <section class="faq-section" id="faq" aria-labelledby="faq-titulo">
+
+    <video autoplay muted loop playsinline class="faq-video" aria-hidden="true">
+      <source src="assets/videos/fundo roxo geometrico.mp4" type="video/mp4">
+    </video>
+
+    <div class="faq-overlay" aria-hidden="true"></div>
+
+    <div class="faq-container">
+
+      <!-- A) Badge padronizado -->
+      <div class="section-title">
+        <span class="section-badge">DÚVIDAS FREQUENTES</span>
+        <h2 id="faq-titulo">FAQ Estratégico</h2>
+        <p class="section-subtitle">Clareza total sobre o impacto da Zyntek no seu crescimento.</p>
+      </div>
+
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            Como a Zyntek precifica a entrega de valor do meu projeto?
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            Não trabalhamos com valores fixos de prateleira, pois cada projeto é uma solução única. Após o nosso briefing estratégico, elaboramos uma proposta personalizada focada no retorno sobre o investimento (ROI) e na complexidade necessária para escalar o seu negócio.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            Qual é o escopo de atuação da Zyntek no meu ecossistema digital?
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            Atuamos desde a concepção de landing pages de alta conversão até o desenvolvimento de sistemas complexos, automações de processos e dashboards de gestão, sempre moldando soluções sob medida para qualquer segmento que busque liderança de mercado.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            Como funciona a metodologia de entrega e agilidade da Zyntek?
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            Nosso cronograma é baseado em fases modulares. Projetos ágeis podem ser validados em dias, enquanto arquiteturas complexas são entregues de forma iterativa, garantindo transparência e alinhamento constante com as metas da sua empresa.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            Como a consultoria estratégica da Zyntek identifica gargalos de escala?
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            Utilizamos diagnósticos tecnológicos e análise de processos para identificar ineficiências operacionais. Nosso papel é transformar processos manuais em fluxos digitais que impulsionam o crescimento e eliminam pontos de atrito no seu negócio.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            Como garantimos a longevidade, segurança e performance pós-entrega?
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            Oferecemos planos de sustentação contínua e manutenção evolutiva. Nosso foco é garantir que o seu ativo digital esteja sempre atualizado, blindado contra vulnerabilidades e com performance otimizada para os desafios do mercado.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
 
   <!-- =====================================================
-       MENU MOBILE — Separado do script principal
-       por ser exclusivo do layout do header
+       FOOTER
   ====================================================== -->
-  <script>
-    (function () {
-      const mobileToggle  = document.getElementById("mobileMenuToggle");
-      const mobileMenu    = document.getElementById("mobileMenu");
-      const mobileOverlay = document.getElementById("mobileOverlay");
+  <footer class="footer-zyntek">
 
-      // Abre / fecha o menu lateral
-      mobileToggle.addEventListener("click", () => {
-        mobileToggle.classList.toggle("active");
-        mobileMenu.classList.toggle("active");
-        mobileOverlay.classList.toggle("active");
-      });
+    <div class="footer-container">
 
-      // Fecha ao clicar no overlay escuro
-      mobileOverlay.addEventListener("click", () => {
-        mobileToggle.classList.remove("active");
-        mobileMenu.classList.remove("active");
-        mobileOverlay.classList.remove("active");
-      });
+      <!-- Coluna 1: Brand -->
+      <div class="footer-column footer-brand-col">
+        <div class="footer-logo">
+          <img src="assets/fotos/logo z .png" alt="Zyntek" width="44" height="44">
+        </div>
+        <h4 class="footer-brand-name">Zyntek Conect</h4>
+        <p class="footer-brand-desc">Tecnologia que conecta o futuro dos negócios ao presente digital.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/zyntek.conect/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Zyntek">
+            <i class="ri-instagram-line" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/zyntekconect-source/zyntekconect-source" target="_blank" rel="noopener noreferrer" aria-label="GitHub da Zyntek">
+            <i class="ri-github-line" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/zyntek-conect-b50616412/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Zyntek">
+            <i class="ri-linkedin-line" aria-hidden="true"></i>
+          </a>
+          <a href="https://wa.me/554488317870" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Zyntek">
+            <i class="ri-whatsapp-line" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
 
-      // Fecha automaticamente ao navegar por um link do menu
-      document.querySelectorAll(".mobile-nav a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileToggle.classList.remove("active");
-          mobileMenu.classList.remove("active");
-          mobileOverlay.classList.remove("active");
-        });
-      });
-    })();
-  </script>
+      <!-- Coluna 2: Institucional -->
+      <div class="footer-column">
+        <h4>Institucional</h4>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre a Zyntek</a></li>
+          <li><a href="#contatos">Fale Conosco</a></li>
+          <li><a href="#projetos">Portfólio</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Corporativo -->
+      <div class="footer-column">
+        <h4>Corporativo</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20tenho%20interesse%20em%20trabalhar%20com%20voc%C3%AAs.%20Como%20funciona%20o%20processo%3F"
+               target="_blank" rel="noopener noreferrer">
+              Trabalhe Conosco
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/554488317870?text=Ol%C3%A1%20equipe%20Zyntek%2C%20gostaria%20de%20conhecer%20o%20programa%20de%20parcerias%20de%20voc%C3%AAs."
+               target="_blank" rel="noopener noreferrer">
+              Seja Parceiro
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Zyntek Conect — Todos os direitos reservados.</span>
+      <span class="footer-dev">Desenvolvido por <strong>Zyntek &amp; Levy Andrade</strong></span>
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+    <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
 </body>
 
